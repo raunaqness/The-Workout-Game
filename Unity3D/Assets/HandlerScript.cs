@@ -26,6 +26,7 @@ public class HandlerScript : MonoBehaviour {
 	[Space(1f)]
 	[Header("Game Stuff")]
 
+	public GameObject congo;
 	public GameObject boy;
 	public GameObject rightarm, leftarm;
 
@@ -38,6 +39,7 @@ public class HandlerScript : MonoBehaviour {
 	void Start () {
 		init();
 		ScoreText.text = "Score : 0";
+		congo.SetActive (false);
 	}
 
 	public void changey(float y){
@@ -98,7 +100,7 @@ public class HandlerScript : MonoBehaviour {
 		client = new UdpClient (port);
 		while (true) {
 			try{
-				IPEndPoint anyIP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
+				IPEndPoint anyIP = new IPEndPoint(IPAddress.Parse("0.0.0.0"), port);
 				byte[] data = client.Receive(ref anyIP);
 
 				string text = Encoding.UTF8.GetString(data);
@@ -132,6 +134,10 @@ public class HandlerScript : MonoBehaviour {
 			score = score + 1;
 			ScoreText.text = "Score : " + score.ToString ();
 			nextCheck = Time.time + checkdelay;
+
+			if(score >= 10){
+				congo.SetActive (true);
+			}
 		}
 	}
 
