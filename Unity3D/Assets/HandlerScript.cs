@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using UnityEngine.UI;
 
 public class HandlerScript : MonoBehaviour {
 
@@ -28,8 +29,15 @@ public class HandlerScript : MonoBehaviour {
 	public GameObject boy;
 	public GameObject rightarm, leftarm;
 
+	public float checkdelay = 2.0f;
+	float nextCheck = 0.0f;
+
+	public Text ScoreText;
+	int score = 0;
+
 	void Start () {
 		init();
+		ScoreText.text = "Score : 0";
 	}
 
 	public void changey(float y){
@@ -40,7 +48,7 @@ public class HandlerScript : MonoBehaviour {
 	public void MoveArms(float left, float right){
 		float l_yrot, r_yrot;
 
-		Debug.Log ("Right : " + right.ToString ());
+//		Debug.Log ("Right : " + right.ToString ());
 
 		l_yrot = ((left) * 70f) + 35f;
 
@@ -50,7 +58,7 @@ public class HandlerScript : MonoBehaviour {
 
 		leftarm.transform.localRotation = (Quaternion.Euler(new Vector3(-2.395f, r_yrot, -181.302f)));
 
-		Debug.Log ("y_rrot : " + l_yrot.ToString ());
+//		Debug.Log ("y_rrot : " + l_yrot.ToString ());
 
 	}
 
@@ -114,9 +122,17 @@ public class HandlerScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-//		hero.transform.position = new Vector3(xPos-6.0f,-3,0);
-		Debug.Log ("lpos : " + lpos);
+//		Debug.Log ("lpos : " + lpos);
+//		Debug.Log ("rpos : " + rpos);
 		MoveArms(lpos, rpos);
+
+		//Update Score
+		if(lpos > 0.75f && rpos > 0.75 && Time.time > nextCheck){
+			Debug.Log ("Score Update");
+			score = score + 1;
+			ScoreText.text = "Score : " + score.ToString ();
+			nextCheck = Time.time + checkdelay;
+		}
 	}
 
 	void OnApplicationQuit(){
