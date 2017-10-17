@@ -1,3 +1,6 @@
+## Setup Instructions
+For OpenCV installation, follow the instructions in this [gist](https://gist.github.com/mananpal1997/aae71487ebd2a389a695f13860bdc4b1) and make sure you're using Python 3.x
+
 ## Running Instructions
 - Make ip and port changes as per you need in unity app and python file.
 - Run either "Uhack Demo - Mac Executable" or the Unity3D Project itself.
