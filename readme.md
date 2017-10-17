@@ -3,6 +3,8 @@
 - Run either "Uhack Demo - Mac Executable" or the Unity3D Project itself.
 - Then, run `hand_detect.py` in OpenCV folder. It will ask you to calibrate your hands. Once done, you can see the your hand movements detected in the OpenCV Server reflect in the Unity App
 
+Demo Video : [Video Link](https://drive.google.com/file/d/0B7MyRBifHJ5kcHFJd0pwaF9fVW8/view?usp=sharing)
+
 
 ## Screenshots 
 
