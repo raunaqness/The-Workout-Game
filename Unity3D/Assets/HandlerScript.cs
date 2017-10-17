@@ -135,7 +135,7 @@ public class HandlerScript : MonoBehaviour {
 			ScoreText.text = "Score : " + score.ToString ();
 			nextCheck = Time.time + checkdelay;
 
-			if(score >= 10){
+			if(score >= 5){
 				congo.SetActive (true);
 			}
 		}

@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<doc>
+  <members>
+    <assembly>
+      <name>UnityEngine.VRModule</name>
+    </assembly>
+    <member name="T:UnityEngine.VR.InputTracking">
+      <summary>
+        <para>A collection of methods and properties for interacting with the VR tracking system.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.InputTracking.disablePositionalTracking">
+      <summary>
+        <para>Disables positional tracking in VR. This takes effect the next time the head pose is sampled.  If set to true the camera only tracks headset rotation state.</para>
+      </summary>
+    </member>
+    <member name="?:UnityEngine.VR.InputTracking.nodeAdded(System.Action`1&lt;UnityEngine.VR.VRNodeState&gt;)">
+      <summary>
+        <para>Called when a tracked node is added to the underlying VR/AR system.</para>
+      </summary>
+      <param name="nodeState">Describes the node that has been added.</param>
+      <param name="value"></param>
+    </member>
+    <member name="?:UnityEngine.VR.InputTracking.nodeRemoved(System.Action`1&lt;UnityEngine.VR.VRNodeState&gt;)">
+      <summary>
+        <para>Called when a tracked node is removed from the underlying VR/AR system.</para>
+      </summary>
+      <param name="nodeState">Describes the node that has been removed.</param>
+      <param name="value"></param>
+    </member>
+    <member name="?:UnityEngine.VR.InputTracking.trackingAcquired(System.Action`1&lt;UnityEngine.VR.VRNodeState&gt;)">
+      <summary>
+        <para>Called when a tracked node begins reporting tracking information.</para>
+      </summary>
+      <param name="nodeState">Describes the node that has begun being tracked.</param>
+      <param name="value"></param>
+    </member>
+    <member name="?:UnityEngine.VR.InputTracking.trackingLost(System.Action`1&lt;UnityEngine.VR.VRNodeState&gt;)">
+      <summary>
+        <para>Called when a tracked node stops reporting tracking information.</para>
+      </summary>
+      <param name="nodeState">Describes the node that has lost tracking.</param>
+      <param name="value"></param>
+    </member>
+    <member name="M:UnityEngine.VR.InputTracking.GetLocalPosition(UnityEngine.VR.VRNode)">
+      <summary>
+        <para>Gets the position of a specific node.</para>
+      </summary>
+      <param name="node">Specifies which node's position should be returned.</param>
+      <returns>
+        <para>The position of the node in its local tracking space.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.VR.InputTracking.GetLocalRotation(UnityEngine.VR.VRNode)">
+      <summary>
+        <para>Gets the rotation of a specific node.</para>
+      </summary>
+      <param name="node">Specifies which node's rotation should be returned.</param>
+      <returns>
+        <para>The rotation of the node in its local tracking space.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.VR.InputTracking.GetNodeName(System.UInt64)">
+      <summary>
+        <para>Accepts the unique identifier for a tracked node and returns a friendly name for it.</para>
+      </summary>
+      <param name="uniqueID">The unique identifier for the Node index.</param>
+      <returns>
+        <para>The name of the tracked node if the given 64-bit identifier maps to a currently tracked node. Empty string otherwise.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.VR.InputTracking.GetNodeStates">
+      <summary>
+        <para>Describes all presently connected VR nodes and provides available tracking state.</para>
+      </summary>
+      <param name="nodeStates">A list that is populated with VR.VRNodeState objects.</param>
+    </member>
+    <member name="M:UnityEngine.VR.InputTracking.Recenter">
+      <summary>
+        <para>Center tracking to the current position and orientation of the HMD.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.VR.TrackingSpaceType">
+      <summary>
+        <para>Represents the size of physical space available for VR.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.TrackingSpaceType.RoomScale">
+      <summary>
+        <para>Represents a space large enough for free movement.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.TrackingSpaceType.Stationary">
+      <summary>
+        <para>Represents a small space where movement may be constrained or positional tracking is unavailable.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.VR.VRDevice">
+      <summary>
+        <para>Contains all functionality related to a VR device.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRDevice.family">
+      <summary>
+        <para>The name of the family of the loaded VR device.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRDevice.isPresent">
+      <summary>
+        <para>Successfully detected a VR device in working order.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRDevice.model">
+      <summary>
+        <para>Specific model of loaded VR device.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRDevice.refreshRate">
+      <summary>
+        <para>Refresh rate of the display in Hertz.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.VR.VRDevice.DisableAutoVRCameraTracking">
+      <summary>
+        <para>Sets whether the camera passed in the first parameter is controlled implicitly by the VR Device</para>
+      </summary>
+      <param name="Camera">The camera that we wish to change behavior on</param>
+      <param name="Disabled">True if the camera's transform is set externally. False if the camera is to be driven implicitly by VRDevice, </param>
+      <returns>
+        <para>Nothing.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.VR.VRDevice.GetNativePtr">
+      <summary>
+        <para>This method returns an IntPtr representing the native pointer to the VR device if one is available, otherwise the value will be IntPtr.Zero.</para>
+      </summary>
+      <returns>
+        <para>The native pointer to the VR device.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.VR.VRDevice.GetTrackingSpaceType">
+      <summary>
+        <para>Returns the device's current TrackingSpaceType. This value determines how the camera is positioned relative to its starting position. For more, see the section "Understanding the camera" in.</para>
+      </summary>
+      <returns>
+        <para>The device's current TrackingSpaceType.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.VR.VRDevice.SetTrackingSpaceType(UnityEngine.VR.TrackingSpaceType)">
+      <summary>
+        <para>Sets the device's current TrackingSpaceType. Returns true on success. Returns false if the given TrackingSpaceType is not supported or the device fails to switch.</para>
+      </summary>
+      <param name="TrackingSpaceType">The TrackingSpaceType the device should switch to.</param>
+      <param name="trackingSpaceType"></param>
+      <returns>
+        <para>True on success. False if the given TrackingSpaceType is not supported or the device fails to switch.</para>
+      </returns>
+    </member>
+    <member name="T:UnityEngine.VR.VRDeviceType">
+      <summary>
+        <para>Supported VR devices.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRDeviceType.Morpheus">
+      <summary>
+        <para>Sony's Project Morpheus VR device for Playstation 4. (Obsolete please use VRDeviceType.PlayStationVR instead).</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRDeviceType.None">
+      <summary>
+        <para>No VR Device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRDeviceType.Oculus">
+      <summary>
+        <para>Oculus family of VR devices.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRDeviceType.PlayStationVR">
+      <summary>
+        <para>Sony's PlayStation VR device for Playstation 4 (formerly called Project Morpheus VR).Sony's PlayStation VR device for Playstation 4 (formerly called Project Morpheus VR).</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRDeviceType.Split">
+      <summary>
+        <para>Split screen stereo 3D (the left and right cameras are rendered side by side).</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRDeviceType.Stereo">
+      <summary>
+        <para>Stereo 3D via D3D11 or OpenGL.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRDeviceType.Unknown">
+      <summary>
+        <para>This value is returned when running on a device that does not have its own value in this VRDeviceType enum.  To find out the device name, you can use VRSettings.loadedDeviceName.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.VR.VRNode">
+      <summary>
+        <para>Enumeration of tracked VR nodes which can be updated by VR input.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRNode.CenterEye">
+      <summary>
+        <para>Node representing a point between the left and right eyes.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRNode.GameController">
+      <summary>
+        <para>Represents a tracked game Controller not associated with a specific hand.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRNode.HardwareTracker">
+      <summary>
+        <para>Represents a physical device that provides tracking data for objects to which it is attached.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRNode.Head">
+      <summary>
+        <para>Node representing the user's head.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRNode.LeftEye">
+      <summary>
+        <para>Node representing the left eye.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRNode.LeftHand">
+      <summary>
+        <para>Node representing the left hand.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRNode.RightEye">
+      <summary>
+        <para>Node representing the right eye.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRNode.RightHand">
+      <summary>
+        <para>Node representing the right hand.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRNode.TrackingReference">
+      <summary>
+        <para>Represents a stationary physical device that can be used as a point of reference in the tracked area.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRNodeState.acceleration">
+      <summary>
+        <para>Sets the vector representing the current acceleration of the tracked node.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRNodeState.nodeType">
+      <summary>
+        <para>The type of the tracked node as specified in VR.VRNode.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRNodeState.position">
+      <summary>
+        <para>Sets the vector representing the current position of the tracked node.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRNodeState.rotation">
+      <summary>
+        <para>Sets the quaternion representing the current rotation of the tracked node.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRNodeState.tracked">
+      <summary>
+        <para>
+          Set to true if the node is presently being tracked by the underlying VRAR system,
+and false if the node is not presently being tracked by the underlying VRAR system.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRNodeState.uniqueID">
+      <summary>
+        <para>The unique identifier of the tracked node.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRNodeState.velocity">
+      <summary>
+        <para>Sets the vector representing the current velocity of the tracked node.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.VR.VRNodeState.TryGetAcceleration">
+      <summary>
+        <para>Attempt to retrieve a vector representing the current acceleration of the tracked node.</para>
+      </summary>
+      <returns>
+        <para>True if the acceleration was set in the output parameter. False if the acceleration is not available due to limitations of the underlying platform or if the node is not presently tracked.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.VR.VRNodeState.TryGetPosition">
+      <summary>
+        <para>Attempt to retrieve a vector representing the current position of the tracked node.</para>
+      </summary>
+      <returns>
+        <para>True if the position was set in the output parameter. False if the position is not available due to limitations of the underlying platform or if the node is not presently tracked.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.VR.VRNodeState.TryGetRotation">
+      <summary>
+        <para>Attempt to retrieve a quaternion representing the current rotation of the tracked node.</para>
+      </summary>
+      <returns>
+        <para>True if the rotation was set in the output parameter. False if the rotation is not available due to limitations of the underlying platform or if the node is not presently tracked.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.VR.VRNodeState.TryGetVelocity">
+      <summary>
+        <para>Attempt to retrieve a vector representing the current velocity of the tracked node.</para>
+      </summary>
+      <returns>
+        <para>True if the velocity was set in the output parameter. False if the velocity is not available due to limitations of the underlying platform or if the node is not presently tracked.</para>
+      </returns>
+    </member>
+    <member name="T:UnityEngine.VR.VRSettings">
+      <summary>
+        <para>Global VR related settings.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRSettings.enabled">
+      <summary>
+        <para>Globally enables or disables VR for the application.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRSettings.eyeTextureHeight">
+      <summary>
+        <para>The current height of an eye texture for the loaded device.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRSettings.eyeTextureWidth">
+      <summary>
+        <para>The current width of an eye texture for the loaded device.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRSettings.isDeviceActive">
+      <summary>
+        <para>Read-only value that can be used to determine if the VR device is active.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRSettings.loadedDevice">
+      <summary>
+        <para>Type of VR device that is currently in use.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRSettings.loadedDeviceName">
+      <summary>
+        <para>Type of VR device that is currently loaded.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRSettings.occlusionMaskScale">
+      <summary>
+        <para>A scale applied to the standard occulsion mask for each platform.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRSettings.renderScale">
+      <summary>
+        <para>Controls the texel:pixel ratio before lens correction, trading performance for sharpness.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRSettings.renderViewportScale">
+      <summary>
+        <para>Controls the texel:pixel ratio before lens correction, trading performance for sharpness.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRSettings.showDeviceView">
+      <summary>
+        <para>Mirror what is shown on the device to the main display, if possible.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRSettings.supportedDevices">
+      <summary>
+        <para>Returns a list of supported VR devices that were included at build time.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.VR.VRSettings.LoadDeviceByName(System.String)">
+      <summary>
+        <para>Loads the requested device at the beginning of the next frame.</para>
+      </summary>
+      <param name="deviceName">Name of the device from VRSettings.supportedDevices.</param>
+      <param name="prioritizedDeviceNameList">Prioritized list of device names from VRSettings.supportedDevices.</param>
+    </member>
+    <member name="M:UnityEngine.VR.VRSettings.LoadDeviceByName(System.String[])">
+      <summary>
+        <para>Loads the requested device at the beginning of the next frame.</para>
+      </summary>
+      <param name="deviceName">Name of the device from VRSettings.supportedDevices.</param>
+      <param name="prioritizedDeviceNameList">Prioritized list of device names from VRSettings.supportedDevices.</param>
+    </member>
+    <member name="T:UnityEngine.VR.VRStats">
+      <summary>
+        <para>Timing and other statistics from the VR subsystem.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.VR.VRStats.gpuTimeLastFrame">
+      <summary>
+        <para>Total GPU time utilized last frame as measured by the VR subsystem.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.VR.VRStats.TryGetDroppedFrameCount(System.Int32&amp;)">
+      <summary>
+        <para>Retrieves the number of dropped frames reported by the VR SDK.</para>
+      </summary>
+      <param name="droppedFrameCount">Outputs the number of frames dropped since the last update.</param>
+      <returns>
+        <para>True if the dropped frame count is available, false otherwise.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.VR.VRStats.TryGetFramePresentCount(System.Int32&amp;)">
+      <summary>
+        <para>Retrieves the number of times the current frame has been drawn to the device as reported by the VR SDK.</para>
+      </summary>
+      <param name="framePresentCount">Outputs the number of times the current frame has been presented.</param>
+      <returns>
+        <para>True if the frame present count is available, false otherwise.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.VR.VRStats.TryGetGPUTimeLastFrame(System.Single&amp;)">
+      <summary>
+        <para>Retrieves the time spent by the GPU last frame, in seconds, as reported by the VR SDK.</para>
+      </summary>
+      <param name="gpuTimeLastFrame">Outputs the time spent by the GPU last frame.</param>
+      <returns>
+        <para>True if the GPU time spent last frame is available, false otherwise.</para>
+      </returns>
+    </member>
+    <member name="T:UnityEngine.VR.WSA.PositionalLocatorState">
+      <summary>
+        <para>Indicates the lifecycle state of the device's spatial location system.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.WSA.PositionalLocatorState.Activating">
+      <summary>
+        <para>The device is reporting its orientation and is preparing to locate its position in the user's surroundings.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.WSA.PositionalLocatorState.Active">
+      <summary>
+        <para>The device is reporting its orientation and position in the user's surroundings.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.WSA.PositionalLocatorState.Inhibited">
+      <summary>
+        <para>The device is reporting its orientation but cannot locate its position in the user's surroundings due to external factors like poor lighting conditions.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.WSA.PositionalLocatorState.OrientationOnly">
+      <summary>
+        <para>The device is reporting its orientation and has not been asked to report its position in the user's surroundings.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.WSA.PositionalLocatorState.Unavailable">
+      <summary>
+        <para>The device's spatial location system is not available.</para>
+      </summary>
+    </member>
+  </members>
+</doc>
