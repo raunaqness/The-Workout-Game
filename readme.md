@@ -17,3 +17,5 @@ Demo Video : [Video Link](https://drive.google.com/file/d/0B7MyRBifHJ5kcHFJd0pwa
 
 ![win](https://github.com/gurraunaqsingh/Uhack/blob/master/4d11d74photo6276277740650997734.jpg)
 
+Made in collaboartion with [Manan Pal Singh](https://github.com/mananpal1997) and [Jay Gupta](https://github.com/hackertron)
+
